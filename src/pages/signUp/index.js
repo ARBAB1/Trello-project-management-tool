@@ -1,23 +1,18 @@
-import { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/router"; // Correct import for routing in Next.js
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import localFont from "next/font/local";
 
-export default function Home() {
+const geistSans = localFont({
+  src: "../fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+});
+
+export default function SignUp() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  // Function to handle login submission
-  const handleLogin = (e) => {
-    e.preventDefault(); // Prevent form refresh
-
-    // Check if the entered email and password are correct
-    if (email === "ghayas110@gmail.com" && password === "123456") {
-      router.push("/home"); // Redirect to HomeScreen
-    } else {
-      alert("Invalid email or password. Please try again.");
-    }
+  const handleSignInRedirect = () => {
+    router.push("/");
   };
 
   return (
@@ -42,7 +37,7 @@ export default function Home() {
         />
       </div>
 
-      {/* Center Login Box */}
+      {/* Center Sign-up Box */}
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm z-10">
         <div className="text-center mb-6">
           <Image
@@ -53,44 +48,43 @@ export default function Home() {
             className="mx-auto"
           />
           <h1 className="text-2xl font-semibold mt-4 text-black">
-            Log in to continue
+            Create your account
           </h1>
         </div>
-
-        {/* Login form */}
-        <form onSubmit={handleLogin} className="space-y-4">
+        <form className="space-y-4">
+          <input
+            type="text"
+            placeholder="Name"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
           <input
             type="email"
             placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
             type="password"
             placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
           >
-            Continue
+            Sign Up
           </button>
         </form>
 
         <div className="text-center mt-4 text-sm">
-          <span
-            className="text-blue-500 hover:underline cursor-pointer"
-            onClick={() => router.push("/signUp")}
-          >
-            Create an account
-          </span>
-        </div>
-        <div className="text-center mt-6 text-xs text-gray-500">
-          <p>Powered by Ghayas</p>
+          <p>
+            Already have an account?{" "}
+            <button
+              onClick={handleSignInRedirect}
+              className="text-blue-500 hover:underline"
+            >
+              Sign in
+            </button>
+          </p>
         </div>
       </div>
     </main>
