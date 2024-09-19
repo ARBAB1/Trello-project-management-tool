@@ -84,6 +84,7 @@ export default function SignUp() {
             >
               Sign in
             </button>
+            
           </p>
         </div>
       </div>

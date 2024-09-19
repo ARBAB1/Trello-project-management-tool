@@ -13,11 +13,9 @@ export default function Home() {
     e.preventDefault(); // Prevent form refresh
 
     // Check if the entered email and password are correct
-    if (email === "ghayas110@gmail.com" && password === "123456") {
+  
       router.push("/home"); // Redirect to HomeScreen
-    } else {
-      alert("Invalid email or password. Please try again.");
-    }
+ 
   };
 
   return (
