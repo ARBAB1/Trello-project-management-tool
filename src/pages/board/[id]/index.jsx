@@ -5,43 +5,44 @@ import { useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 // Assuming the workspaces are stored in localStorage or some API
-const workspaces = [
-  {
-    name: "Workspace 1",
-    boards: [
-      { id: 0, title: "Board 1", background: "/hero1.jpg" },
-      { id: 1, title: "Board 2", background: "/hero2.jpg" },
-    ],
-  },
-  {
-    name: "Workspace 2",
-    boards: [
-      { id: 2, title: "Board 3", background: "/hero3.jpg" },
-      { id: 3, title: "Board 4", background: "/hero4.jpg" },
-    ],
-  },
-];
-
-const initialColumns = {
-  doing: {
-    name: "Doing",
-    items: [],
-  },
-  qa: {
-    name: "QA",
-    items: [],
-  },
-  todo: {
-    name: "To Do",
-    items: [],
-  },
-  done: {
-    name: "Done",
-    items: [],
-  },
-};
 
 export default function BoardPage() {
+  const workspaces = [
+    {
+      name: "Workspace 1",
+      boards: [
+        { id: 0, title: "Board 1", background: "/hero1.jpg" },
+        { id: 1, title: "Board 2", background: "/hero2.jpg" },
+      ],
+    },
+    {
+      name: "Workspace 2",
+      boards: [
+        { id: 2, title: "Board 3", background: "/hero3.jpg" },
+        { id: 3, title: "Board 4", background: "/hero4.jpg" },
+      ],
+    },
+  ];
+  
+  const initialColumns = {
+    doing: {
+      name: "Doing",
+      items: [],
+    },
+    qa: {
+      name: "QA",
+      items: [],
+    },
+    todo: {
+      name: "To Do",
+      items: [],
+    },
+    done: {
+      name: "Done",
+      items: [],
+    },
+  };
+  
   const router = useRouter();
   const { id } = router.query; // Get the board ID from the route
 
